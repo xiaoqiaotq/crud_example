@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template"
+        >
+<head>
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    
+	<link rel="stylesheet" type="text/css" href="/resources/assets/media/css/select2_metro.css" th:href="@{/resources/assets/media/css/select2_metro.css}" />
+
+	<link rel="stylesheet" href="/resources/assets/media/css/DT_bootstrap.css" th:href="@{/resources/assets/media/css/DT_bootstrap.css}" />
+	
+	<link href="/resources/assets/media/css/glyphicons.css" th:href="@{/resources/assets/media/css/glyphicons.css}" rel="stylesheet"/>
+	
+	<link href="/resources/assets/media/css/halflings.css" th:href="@{/resources/assets/media/css/halflings.css}" rel="stylesheet"/>
+
+    <!-- END PAGE LEVEL STYLES -->    
+</head>
+<body>
+
+
+		<div layout:fragment="content">
+		
+      		 <div class="span12">
+
+						<!-- BEGIN SAMPLE FORM PORTLET-->   
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-reorder"></i>用户</div>
+
+								<div class="tools">
+
+									<a href="javascript:;" class="collapse"></a>
+
+
+								</div>
+
+							</div>
+
+							<div class="portlet-body form">
+
+								<!-- BEGIN FORM-->
+
+								<form action="user_list.html" th:action="@{/user/save}" class="form-horizontal" method="post">
+
+									<div class="control-group">
+
+										<label class="control-label">username</label>
+
+										<div class="controls">
+
+											<input type="text" class="span6 m-wrap" name="username"/>
+
+											<span class="help-inline">Some hint here</span>
+
+										</div>
+
+									</div>
+									
+									<div class="control-group">
+
+										<label class="control-label">age</label>
+
+										<div class="controls">
+
+											<input type="text" class="span6 m-wrap" name="age"/>
+
+											<span class="help-inline">Some hint here</span>
+
+										</div>
+
+									</div>
+
+		
+
+
+									<div class="form-actions">
+
+										<button type="submit" class="btn blue">Submit</button>
+
+										<button type="button" class="btn">Cancel</button>                            
+
+									</div>
+
+								</form>
+
+								<!-- END FORM-->       
+
+							</div>
+
+						</div>
+
+						<!-- END SAMPLE FORM PORTLET-->
+            
+		</div>
+		</div>
+	
+		<div layout:fragment="script">
+		
+			<!-- BEGIN PAGE LEVEL PLUGINS -->
+			
+				<script type="text/javascript" src="/resources/assets/media/js/select2.min.js" th:src="@{/resources/assets/media/js/select2.min.js}"></script>
+			
+				<script type="text/javascript" src="/resources/assets/media/js/jquery.dataTables.js" th:src="@{/resources/assets/media/js/jquery.dataTables.js}"></script>
+			
+				<script type="text/javascript" src="/resources/assets/media/js/DT_bootstrap.js" th:src="@{/resources/assets/media/js/DT_bootstrap.js}"></script>
+			
+			<!-- END PAGE LEVEL PLUGINS -->
+			
+			<!-- BEGIN PAGE LEVEL SCRIPTS -->
+			
+			
+			
+			
+			<!-- END PAGE LEVEL SCRIPTS -->
+			
+			<script>
+			
+			    jQuery(document).ready(function () {
+			
+			
+			    });
+			
+			</script>
+			
+			<!-- END JAVASCRIPTS -->
+		
+		</div>
+	
+</body>
+</html>

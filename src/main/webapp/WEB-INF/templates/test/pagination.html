@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template"
+        >
+<head>
+    <title >Hello World!</title>
+    <link href="media/css/style.css" th:href="@{/resources/test/simplePagination.css}"  rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+
+		<div layout:fragment="content">
+				    <p>分页 </p>
+				    <div id="page1"></div>
+		</div>
+		
+	    <div layout:fragment="script">
+			<script src="../../../resources/test/ajaxfileupload.js" th:src="@{/resources/test/jquery.simplePagination.js}"></script>		
+		    <script>
+	
+			    jQuery(document).ready(function () {
+			    	   $("#page1").pagination({
+			    	        items: 209,
+			    	        itemsOnPage: 10,
+			    	        currentPage:2,
+			    	        cssStyle: 'light-theme',
+			    	        onPageClick:function(pageNumber, event){
+			    	        	alert(pageNumber);
+			    	        }
+			    	    });
+			    	  // $("#page1").pagination('selectPage', 4);
+			    });
+	
+			</script>	
+	    </div>
+</body>
+</html>

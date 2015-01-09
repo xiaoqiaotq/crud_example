@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template"
+        >
+<head>
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    
+	<link rel="stylesheet" type="text/css" href="/resources/assets/media/css/select2_metro.css" th:href="@{/resources/assets/media/css/select2_metro.css}" />
+
+	<link rel="stylesheet" href="/resources/assets/media/css/DT_bootstrap.css" th:href="@{/resources/assets/media/css/DT_bootstrap.css}" />
+	
+	<link href="/resources/assets/media/css/glyphicons.css" th:href="@{/resources/assets/media/css/glyphicons.css}" rel="stylesheet"/>
+	
+	<link href="/resources/assets/media/css/halflings.css" th:href="@{/resources/assets/media/css/halflings.css}" rel="stylesheet"/>
+
+    <!-- END PAGE LEVEL STYLES -->    
+</head>
+<body>
+
+
+		<div layout:fragment="content">
+		
+			<div class="span12 responsive" data-tablet="span12 fix-offset" data-desktop="span12">
+                <!-- BEGIN SAMPLE TABLE PORTLET-->
+                
+                <form action="/user/saveRole/${id}" th:action="@{'/user/saveRole/'+${id}}" method="post">
+						<div class="portlet box grey">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-user"></i>分配角色</div>
+
+								<div class="actions">
+
+									<button  class="btn blue" type="submit">保存</button>
+
+								</div>
+							</div>
+
+							<div class="portlet-body">
+
+								<table class="table table-striped table-bordered table-hover" id="roles" >
+
+									<thead>
+
+										<tr>
+
+											<th style="width:8px;">
+											    <input type="checkbox" id="checkable" data-set='#roles .checkboxes' />
+											</th>
+
+											<th>角色编号</th>
+
+											<th class="hidden-480">角色名</th>
+
+											<th class="hidden-480">描述</th>
+											
+
+										</tr>
+
+									</thead>
+
+									<tbody>
+									
+										<tr class="odd gradeX" th:each="role:${roles}">
+
+											<td><input type="checkbox" class="checkboxes" name='roleIds' value="${role.id}" th:checked="${role.checked}"  th:value="${role.id}"/></td>
+
+											<td th:text="${role.id}">${role.id}</td>
+
+											<td class="hidden-480" th:text="${role.roleName}">${role.roleName}</td>
+
+											<td><span class="label label-success" th:text="${role.roleDesc}">${role.roleDesc}</span></td>
+											
+										</tr>
+										
+
+
+									</tbody>
+
+								</table>
+
+							</div>
+
+						</div>
+				</form>
+                <!-- END SAMPLE TABLE PORTLET-->
+
+            </div>
+		</div>
+	
+		<div layout:fragment="script">
+		
+			<!-- BEGIN PAGE LEVEL PLUGINS -->
+			
+				<script type="text/javascript" src="/resources/assets/media/js/select2.min.js" th:src="@{/resources/assets/media/js/select2.min.js}"></script>
+			
+				<script type="text/javascript" src="/resources/assets/media/js/jquery.dataTables.js" th:src="@{/resources/assets/media/js/jquery.dataTables.js}"></script>
+			
+				<script type="text/javascript" src="/resources/assets/media/js/DT_bootstrap.js" th:src="@{/resources/assets/media/js/DT_bootstrap.js}"></script>
+			
+			<!-- END PAGE LEVEL PLUGINS -->
+			
+			<!-- BEGIN PAGE LEVEL SCRIPTS -->
+			
+				<script type="text/javascript" src="/resources/common.js" th:src="@{/resources/commons.js}"></script>
+			
+			
+			<!-- END PAGE LEVEL SCRIPTS -->
+			
+			<script>
+			
+			    jQuery(document).ready(function () {
+			
+			
+			    	commons.checkAll(jQuery('#checkable')); 
+			
+			    });
+			
+			</script>
+			
+			<!-- END JAVASCRIPTS -->
+		
+		</div>
+	
+</body>
+</html>

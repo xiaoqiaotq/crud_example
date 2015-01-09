@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template"
+        >
+<head>
+    <title >Hello World!</title>
+    <link href="media/css/style.css" th:href="@{/resources/test/ajaxfileupload.css}"  rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+
+		<div layout:fragment="content">
+		<img id="loading" src="loading.gif" style="display:none;" th:src="@{/resources/test/loading.gif}"/>
+			<form name="form" action="" method="POST" enctype="multipart/form-data">
+			<table cellpadding="0" cellspacing="0" class="tableForm">
+	
+			<thead>
+				<tr>
+					<th>Please select a file and click Upload button</th>
+				</tr>
+			</thead>
+			<tbody>	
+				<tr>
+					<td><input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input"/></td>			</tr>
+	
+			</tbody>
+				<tfoot>
+					<tr>
+						<td><button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">Upload</button></td>
+					</tr>
+				</tfoot>
+		
+		</table>
+			</form>    					    	    	
+        </div>
+		<div layout:fragment="script">
+			<script src="../../../resources/test/ajaxfileupload.js" th:src="@{/resources/test/ajaxfileupload.js}"></script>		
+			<script type="text/javascript">
+				function ajaxFileUpload()
+				{
+					$("#loading")
+					.ajaxStart(function(){
+						$(this).show();
+					})
+					.ajaxComplete(function(){
+						$(this).hide();
+					});
+			
+					$.ajaxFileUpload
+					(
+						{
+							url:'/springmvc-test/upload/test',
+							secureuri:false,
+							fileElementId:'fileToUpload',
+							dataType: 'json',
+							data:{name:'logan', id:'id'},
+							success: function (data, status)
+							{
+								alert(data.id+','+data.date);
+							},
+							error: function (data, status, e)
+							{
+								alert(e);
+							}
+						}
+					)
+					
+					return false;
+			
+				}
+			</script>				
+		</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        >
+<head>
+    <title>modal</title>
+</head>
+<body>
+<h1 th:text="${'hello '+#httpServletRequest.remoteUser}"   >Hello user</h1>
+
+<section layout:fragment="content">
+    <p> modal body</p>
+</section>
+<footer>
+    <p layout:fragment="custom-footer">modal footer</p>
+</footer>
+</body>
+</html>
