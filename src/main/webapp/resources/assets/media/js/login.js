@@ -10,9 +10,9 @@ var Login = function () {
 	            focusInvalid: false, // do not focus the last invalid input
 	            rules: {
 	                username: {
-	                    required: true
+	                    required: true,
 	                },
-	                password: {
+	                pass: {
 	                    required: true
 	                },
 	                remember: {
@@ -22,10 +22,10 @@ var Login = function () {
 
 	            messages: {
 	                username: {
-	                    required: "Username is required."
+	                    required: "必填",
 	                },
-	                password: {
-	                    required: "Password is required."
+	                pass: {
+	                    required: "."
 	                }
 	            },
 
@@ -47,15 +47,12 @@ var Login = function () {
 	                error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
 	            },
 
-	            submitHandler: function (form) {
-	                window.location.href = "index.html";
-	            }
 	        });
 
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html";
+	                	$('.login-form').submit();
 	                }
 	                return false;
 	            }

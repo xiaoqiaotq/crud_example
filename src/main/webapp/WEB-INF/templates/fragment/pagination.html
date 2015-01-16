@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        >
+<body>
+
+<div layout:fragment="pagination">
+	<div class="pagination pagination-right" th:with="url=${#httpServletRequest.requestURL}">
+		<ul>
+	               	<li th:if="${page.hasPrevious()}"><a href="" th:href="@{${url}(page=1)}+${searchParams}">&lt;&lt;</a></li>
+	                <li th:if="${page.hasPrevious()}"><a href="" th:href="@{${url}(page=${current-1})}+${searchParams}">&lt;</a></li>
+	                
+	                <li class="disabled" th:unless="${page.hasPrevious()}"><a href="#">&lt;&lt;</a></li>
+	                <li class="disabled" th:unless="${page.hasPrevious()}"><a href="#">&lt;</a></li>
+	 
+	                <li th:each="i:${#numbers.sequence(begin,end)}" th:classappend="${i==current}?'active'">
+	                	<a th:href="@{${url}(page=${i})}+${searchParams}" th:text="${i}">${i}</a>
+	                </li>
+	                
+	               	<li th:if="${page.hasNext()}"><a th:href="@{${url}(page=${current+1})}+${searchParams}">&gt;</a></li>
+	                <li th:if="${page.hasNext()}"><a th:href="@{${url}(page=${page.totalPages})}+${searchParams}">&gt;&gt;</a></li>
+	                <li class="disabled" th:unless="${page.hasNext()}"><a href="#">&gt;</a></li>
+	                <li class="disabled" th:unless="${page.hasNext()}"><a href="#">&gt;&gt;</a></li>
+	
+		</ul>
+	</div>	
+</div>
+</body>
+</html>

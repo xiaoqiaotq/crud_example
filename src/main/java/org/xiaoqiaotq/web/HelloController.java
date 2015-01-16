@@ -1,4 +1,4 @@
-package org.xiaoqiaotq.controller;
+package org.xiaoqiaotq.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
